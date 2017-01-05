@@ -1,0 +1,2 @@
+# Blaze-HTMLCell
+HTML
