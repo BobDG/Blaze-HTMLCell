@@ -7,8 +7,6 @@
 //
 
 #import "BlazeHTMLRow.h"
-#import "TTTAttributedLabel.h"
-#import "DTCoreText/DTCoreText.h"
 #import "BlazeHTMLTableViewCell.h"
 
 @interface BlazeHTMLTableViewCell () <TTTAttributedLabelDelegate>

@@ -7,12 +7,14 @@
 //
 
 @import Blaze;
+@import DTCoreText;
+@import TTTAttributedLabel;
 
 @interface BlazeHTMLTableViewCell : BlazeTableViewCell
 {
     
 }
 
-@property(nonatomic,weak) IBOutlet TTTAttributedLabel *htmlLabel;
+@property(nonatomic,strong) IBOutlet TTTAttributedLabel *htmlLabel;
 
 @end
