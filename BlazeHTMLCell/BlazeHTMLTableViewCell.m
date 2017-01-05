@@ -16,8 +16,6 @@
     
 }
 
-@property(nonatomic,weak) IBOutlet TTTAttributedLabel *htmlLabel;
-
 @end
 
 @implementation BlazeHTMLTableViewCell

@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.homepage       = 'https://github.com/BobDG/Blaze-HTMLCell'
   s.authors        = {'Bob de Graaf' => 'graafict@gmail.com'}
   s.source         = { :git => 'https://github.com/BobDG/Blaze-HTMLCell.git', :tag => '0.0.2' }
-  s.source_files   = 'BlazeHTMLCell/**/*.{h,m}'
+  s.source_files   = 'BlazeHTMLCell/*.{h,m}'
   s.platform       = :ios
   s.requires_arc   = 'true'
   s.dependency     'Blaze'
