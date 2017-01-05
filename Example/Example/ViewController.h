@@ -6,7 +6,7 @@
 //  Copyright © 2017 GraafICT. All rights reserved.
 //
 
-#import "BlazeTableViewController.h"
+@import Blaze;
 
 @interface ViewController : BlazeTableViewController
 {

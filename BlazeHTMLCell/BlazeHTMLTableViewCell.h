@@ -6,7 +6,7 @@
 //  Copyright © 2016 GraafICT. All rights reserved.
 //
 
-#import "BlazeTableViewCell.h"
+@import Blaze;
 
 @interface BlazeHTMLTableViewCell : BlazeTableViewCell
 {

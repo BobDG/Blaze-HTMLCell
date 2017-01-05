@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 GraafICT. All rights reserved.
 //
 
-#import "BlazeRow.h"
+@import Blaze;
 
 @interface BlazeHTMLRow : BlazeRow
 {
