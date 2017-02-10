@@ -49,8 +49,14 @@
             options[NSBaseURLDocumentOption] = row.htmlBaseURL;
         }
         
-        //Set the text
-        self.htmlLabel.text = [[NSMutableAttributedString alloc] initWithAttributedString:[[NSAttributedString alloc] initWithHTMLData:htmlData options:options documentAttributes:nil]];
+        //Create attributed string
+        NSMutableAttributedString *attributedString = [[NSMutableAttributedString alloc] initWithAttributedString:[[NSAttributedString alloc] initWithHTMLData:htmlData options:options documentAttributes:nil]];
+        
+        //Remove CTForegroundColorFromContext attribute or ahref-links are not colored right @see https://github.com/Cocoanetics/DTCoreText/issues/792
+        [attributedString removeAttribute:@"CTForegroundColorFromContext" range:NSMakeRange(0, attributedString.length)];
+        
+        //Finally set it
+        self.htmlLabel.text = attributedString;
     }
     
     //Attributes

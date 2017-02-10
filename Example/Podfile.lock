@@ -42,7 +42,16 @@ DEPENDENCIES:
   - BDGMacros
   - Blaze
   - DTCoreText
-  - TTTAttributedLabel
+  - TTTAttributedLabel (from `https://github.com/kwketh/TTTAttributedLabel`)
+
+EXTERNAL SOURCES:
+  TTTAttributedLabel:
+    :git: https://github.com/kwketh/TTTAttributedLabel
+
+CHECKOUT OPTIONS:
+  TTTAttributedLabel:
+    :commit: 5e330e2e83e5a15b8afb802ab15b30ae26e3dc3e
+    :git: https://github.com/kwketh/TTTAttributedLabel
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
@@ -53,6 +62,6 @@ SPEC CHECKSUMS:
   DTFoundation: 0ef29c70a9814e15518694862bd739347abe2a50
   TTTAttributedLabel: 8cffe8e127e4e82ff3af1e5386d4cd0ad000b656
 
-PODFILE CHECKSUM: e7159ae0b8ae699080a0390a7c68ac441b2bafda
+PODFILE CHECKSUM: 9f71fb00b84d71b218682448e0920a208cb9bc39
 
 COCOAPODS: 1.1.1

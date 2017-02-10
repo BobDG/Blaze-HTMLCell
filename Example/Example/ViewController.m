@@ -10,7 +10,7 @@
 #import "BlazeHTMLRow.h"
 #import "ViewController.h"
 
-#define XIBHTMLCell @"HTMLTableViewCell"
+#define XIBHTMLCell             @"HTMLTableViewCell"
 
 @interface ViewController ()
 {
@@ -28,9 +28,9 @@
     [super viewDidLoad];
     
     self.htmlString = @"<h1>Html cells are awesome</h1><p>This is an awesome feature. HTML-string generated wih high speed, rich text formatting such as <b>Bold</b>, <u>underlined</u>, <i>italic</i>.</p></br>"
-    "<p>Of course, bullet lists as well</p><ul><li>Bullet list 1</li><li>Bullet list 2</li><li>Bullet list 3</li><br/>"
+    "<p>Of course, bullet lists as well</p><ul><li>Bullet list 1 with a lot of text to show the automatic indent will also work perfectly :)</li><li>Bullet list 2</li><li>Bullet list 3</li><br/>"
     "<h2>Least but not last, links work! (with custom colors)</h2>"
-    "Websites: github.com/BobDG/Blaze<br/>"
+    "Websites: www.github.com/BobDG/Blaze<br/>"
     "Phone-numbers: +1-202-555-0113<br/>"
     "Addresses: Apple Campus, Cupertino, CA 95014, USA";
     [self loadTableContent];
@@ -45,7 +45,7 @@
     BlazeSection *section = [BlazeSection new];
     [self.tableArray addObject:section];
     
-    //Rows
+    //Row Label
     BlazeHTMLRow *htmlRow = [BlazeHTMLRow rowWithXibName:XIBHTMLCell];
     htmlRow.htmlString = self.htmlString;
     htmlRow.htmlFont = [UIFont systemFontOfSize:17.0f];
@@ -60,7 +60,6 @@
     [htmlRow setAddressTapped:^(NSDictionary *address) {
         [self showMessage:[NSString stringWithFormat:@"%@", address]];
     }];
-    
     [section addRow:htmlRow];
     
     //Reload

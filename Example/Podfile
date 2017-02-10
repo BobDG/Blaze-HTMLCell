@@ -7,5 +7,5 @@ target 'Example' do
     pod 'BDGMacros'
     
     pod 'DTCoreText'
-    pod 'TTTAttributedLabel'
+    pod 'TTTAttributedLabel', git: 'https://github.com/kwketh/TTTAttributedLabel'
 end
