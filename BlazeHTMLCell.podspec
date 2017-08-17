@@ -8,8 +8,8 @@ Pod::Spec.new do |s|
   s.authors        = {'Bob de Graaf' => 'graafict@gmail.com'}
   s.source         = { :git => 'https://github.com/BobDG/Blaze-HTMLCell.git', :tag => s.version.to_s }
   s.source_files   = 'BlazeHTMLCell/*.{h,m}'
-  s.platform       = :ios
-  s.requires_arc   = 'true'
+  s.platform       	= :ios, '8.0'
+  s.requires_arc   	= true
   s.dependency     'Blaze'
   s.dependency     'DTCoreText'
   s.dependency     'TTTAttributedLabel'
