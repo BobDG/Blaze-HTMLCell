@@ -6,9 +6,8 @@
 //  Copyright © 2016 GraafICT. All rights reserved.
 //
 
-@import Blaze;
-@import DTCoreText;
-@import TTTAttributedLabel;
+#import <Blaze/BlazeTableViewCell.h>
+#import <TTTAttributedLabel/TTTAttributedLabel.h>
 
 @interface BlazeHTMLTableViewCell : BlazeTableViewCell
 {

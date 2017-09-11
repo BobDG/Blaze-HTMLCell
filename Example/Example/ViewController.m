@@ -31,7 +31,7 @@
     "<p>Of course, bullet lists as well</p><ul><li>Bullet list 1 with a lot of text to show the automatic indent will also work perfectly :)</li><li>Bullet list 2</li><li>Bullet list 3</li><br/>"
     "<h2>Least but not last, links work! (with custom colors)</h2>"
     "Websites: www.github.com/BobDG/Blaze<br/>"
-    "Phone-numbers: +1-202-555-0113<br/>"
+    "Phone-numbers: +31624645787<br/>"
     "Addresses: Apple Campus, Cupertino, CA 95014, USA";
     [self loadTableContent];
 }

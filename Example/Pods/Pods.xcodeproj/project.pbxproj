@@ -25,7 +25,7 @@
 		0CBA0252C547FE41FE9435D88598DA2E /* DTHTMLParserNode.m in Sources */ = {isa = PBXBuildFile; fileRef = A33DF8C772AC1F94E4E44B44DF6AF786 /* DTHTMLParserNode.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		0D1FFD30267C0776FD3E88EFF51E312F /* UIImageView+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 7AF07011EE412473B8108E69BD8CAED9 /* UIImageView+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0F5F120FA8275254FB2E5F232269609D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E6ABF9D1962ECC591F9A249B323861 /* Foundation.framework */; };
-		100E6A48B2A3F8A355932AB79246103C /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC111B3479A3F34CDCF6FFC743290E /* AFNetworking.framework */; };
+		100E6A48B2A3F8A355932AB79246103C /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FAC111B3479A3F34CDCF6FFC743290E /* AFNetworking.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		10C31AAE7DC9FAEFDBAA6BDABCC7857A /* DTFolderMonitor.h in Headers */ = {isa = PBXBuildFile; fileRef = 48C6E01674AB9098B1B04F97DFF97AF1 /* DTFolderMonitor.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		120D49D6DE11B8B7418D8565AAE5B42D /* NSString+Paragraphs.m in Sources */ = {isa = PBXBuildFile; fileRef = EE9FA6B2039D264B93706A22C96C3A1A /* NSString+Paragraphs.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks -DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		1227A189C672BA8A9F28C9C7AB326BDC /* DTAnimatedGIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 7BBED7F26281FF6D7C16DC9920235F74 /* DTAnimatedGIF.m */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0 -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -50,7 +50,7 @@
 		23E4889BEC2C219B7CB70F3A394F709A /* DTAttributedTextCell.h in Headers */ = {isa = PBXBuildFile; fileRef = F8D31EAFFA58DB7DBD0CC6A567861E36 /* DTAttributedTextCell.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		23EFB184AD12FB1014FFC765CE0D710A /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C4E9C81199CFF62C610404664E11A51 /* Security.framework */; };
 		2726370A77FA4CD5E03AB233A7C0F8C0 /* BlazeInputTile.h in Headers */ = {isa = PBXBuildFile; fileRef = 703A11F5D5C26CEB5C6806B20DE7A078 /* BlazeInputTile.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2888B8205E1FD5E4454D290F43AB073F /* BDGImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5523DEFA940CC0028C9B3D4409C482A4 /* BDGImagePicker.framework */; };
+		2888B8205E1FD5E4454D290F43AB073F /* BDGImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5523DEFA940CC0028C9B3D4409C482A4 /* BDGImagePicker.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		2AC9EBA9AA10C859FDC855CE8035DA38 /* DTTextBlock.h in Headers */ = {isa = PBXBuildFile; fileRef = 00A9D5781AC6531BAE52E672F124141F /* DTTextBlock.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2AD2F1367CFB74CA2F440C6BDE9506F9 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49E6ABF9D1962ECC591F9A249B323861 /* Foundation.framework */; };
 		2B0705CC26A4CBEE32A5A60284AED35B /* UIButton+AFNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = 8501D6FA87458D3A67D7CD6733A848DF /* UIButton+AFNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -430,7 +430,7 @@
 		10A91B40589AE1434602BE1CA63DDA30 /* BlazeTextView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeTextView.h; path = Blaze/TextViews/BlazeTextView.h; sourceTree = "<group>"; };
 		10B52BB49FC9D891327E0CAD06C5B16E /* Blaze.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = Blaze.xcconfig; sourceTree = "<group>"; };
 		1114C4300B5CC7464606A8D8482DE88F /* DTCoreTextLayoutFrameAccessibilityElementGenerator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTCoreTextLayoutFrameAccessibilityElementGenerator.m; path = Core/Source/DTCoreTextLayoutFrameAccessibilityElementGenerator.m; sourceTree = "<group>"; };
-		119072C64A19799964E1620D83F514FB /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
+		119072C64A19799964E1620D83F514FB /* Pods-Example.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = "Pods-Example.modulemap"; sourceTree = "<group>"; };
 		12C7534E9214FCE162762C9E81390D2E /* NSString+DTUtilities.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+DTUtilities.h"; path = "Core/Source/NSString+DTUtilities.h"; sourceTree = "<group>"; };
 		13128FDE1A2AD556439C34EB02A15DA8 /* BlazeSwitchTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeSwitchTableViewCell.h; path = Blaze/TableViewCells/BlazeSwitchTableViewCell.h; sourceTree = "<group>"; };
 		138876C3C3E180B74BA320CB0BF4FB4A /* DTExtendedFileAttributes.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTExtendedFileAttributes.m; path = Core/Source/DTExtendedFileAttributes.m; sourceTree = "<group>"; };
@@ -447,7 +447,7 @@
 		1A3E30701573862C50ED0E5DE0C7CB40 /* BlazeDatePickerField.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeDatePickerField.h; path = Blaze/TextFields/BlazeDatePickerField.h; sourceTree = "<group>"; };
 		1A7B9148E7A8EAA192ED6B5C69B991BD /* AFSecurityPolicy.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = AFSecurityPolicy.h; path = AFNetworking/AFSecurityPolicy.h; sourceTree = "<group>"; };
 		1B1A7D79231DFA0221C4D4937B4E3829 /* NSAttributedStringRunDelegates.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = NSAttributedStringRunDelegates.h; path = Core/Source/NSAttributedStringRunDelegates.h; sourceTree = "<group>"; };
-		1B360A22FAF3E5C39267404204135CE6 /* TTTAttributedLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = TTTAttributedLabel.modulemap; sourceTree = "<group>"; };
+		1B360A22FAF3E5C39267404204135CE6 /* TTTAttributedLabel.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = TTTAttributedLabel.modulemap; sourceTree = "<group>"; };
 		1BE616CA9E8AE623C2D1500C84C11037 /* NSString+DTUtilities.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+DTUtilities.m"; path = "Core/Source/NSString+DTUtilities.m"; sourceTree = "<group>"; };
 		1C53AFB153E2BA6726CECAF4FDBD5CA6 /* DTHTMLElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTHTMLElement.m; path = Core/Source/DTHTMLElement.m; sourceTree = "<group>"; };
 		1C71026CF5A8B89610BB145031461945 /* AFNetworking-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "AFNetworking-dummy.m"; sourceTree = "<group>"; };
@@ -483,11 +483,11 @@
 		34EDF265F1C8B055F1B065D85AFDB146 /* NSURL+DTUnshorten.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURL+DTUnshorten.m"; path = "Core/Source/NSURL+DTUnshorten.m"; sourceTree = "<group>"; };
 		3518574AFF04027E20A9793624E8C969 /* DTTextAttachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTTextAttachment.h; path = Core/Source/DTTextAttachment.h; sourceTree = "<group>"; };
 		36AA0B00BED66A2392E06FA90F0BC6A9 /* BlazeTileCollectionViewCell.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = BlazeTileCollectionViewCell.xib; path = Blaze/CollectionViewCells/BlazeTileCollectionViewCell.xib; sourceTree = "<group>"; };
-		385D0EAF1BF7861AB3F893DD801E2C20 /* Arrow_Left@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "Arrow_Left@2x.png"; path = "Blaze/Resources/Arrow_Left@2x.png"; sourceTree = "<group>"; };
+		385D0EAF1BF7861AB3F893DD801E2C20 /* Arrow_Left@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Arrow_Left@2x.png"; path = "Blaze/Resources/Arrow_Left@2x.png"; sourceTree = "<group>"; };
 		38E7896FB1E4FDCAA0894A303C3F679F /* DTTiledLayerWithoutFade.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTiledLayerWithoutFade.m; path = Core/Source/iOS/DTTiledLayerWithoutFade.m; sourceTree = "<group>"; };
 		398B050EC01B824E3449BCA4B4FBB599 /* BlazePickerViewField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazePickerViewField.m; path = Blaze/TextFields/BlazePickerViewField.m; sourceTree = "<group>"; };
 		39BD8A232590F09FC833E9794A4DFCD2 /* DTVersion.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTVersion.m; path = Core/Source/DTVersion.m; sourceTree = "<group>"; };
-		3B4DD2DF53E0BE7BD543CB80E9C703B7 /* BDGImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BDGImagePicker.framework; path = BDGImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4DD2DF53E0BE7BD543CB80E9C703B7 /* BDGImagePicker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BDGImagePicker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4056245FDE1382C9BB3923D6D1961F9A /* AFURLRequestSerialization.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLRequestSerialization.m; path = AFNetworking/AFURLRequestSerialization.m; sourceTree = "<group>"; };
 		418784B297EF73E6F3AB63FE70285DB3 /* BlazeNSFetchedTableViewController.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeNSFetchedTableViewController.m; path = Blaze/BlazeNSFetchedTableViewController.m; sourceTree = "<group>"; };
 		4227C25E0B797921EC77AFD4AB2D7D02 /* NSMutableAttributedString+HTML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableAttributedString+HTML.m"; path = "Core/Source/NSMutableAttributedString+HTML.m"; sourceTree = "<group>"; };
@@ -509,7 +509,7 @@
 		4B6F00CE71D1D2234D8F8199CAC2DA9C /* NSAttributedString+SmallCaps.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSAttributedString+SmallCaps.h"; path = "Core/Source/NSAttributedString+SmallCaps.h"; sourceTree = "<group>"; };
 		4C38AB847B3D13CF4CAA1BE8C01BC1DA /* UIButton+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIButton+AFNetworking.m"; path = "UIKit+AFNetworking/UIButton+AFNetworking.m"; sourceTree = "<group>"; };
 		4D7E5EEACE2CE28B5BDAF6BF106CFB7C /* NSArray+DTError.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSArray+DTError.h"; path = "Core/Source/NSArray+DTError.h"; sourceTree = "<group>"; };
-		4D9734751A06FAFA6C829F884F838D96 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AFNetworking.framework; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4D9734751A06FAFA6C829F884F838D96 /* AFNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AFNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DA05BB47528F2A6B7451AC277D01D5B /* DTCustomColoredAccessory.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTCustomColoredAccessory.h; path = Core/Source/iOS/DTCustomColoredAccessory.h; sourceTree = "<group>"; };
 		4DA898F3F50CE4DD66681DCA0A5F26C5 /* DTCoreTextMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTCoreTextMacros.h; path = Core/Source/DTCoreTextMacros.h; sourceTree = "<group>"; };
 		4ED4707EF2C160F60EAC577E24130BD6 /* BlazeTextFieldTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeTextFieldTableViewCell.m; path = Blaze/TableViewCells/BlazeTextFieldTableViewCell.m; sourceTree = "<group>"; };
@@ -538,14 +538,14 @@
 		5FBBAC4E70A5F6935A6E95E8ED7D3D7A /* DTIframeTextAttachment.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTIframeTextAttachment.h; path = Core/Source/DTIframeTextAttachment.h; sourceTree = "<group>"; };
 		6135DC938344BCC283CA3F0E853B4CD9 /* DTTextHTMLElement.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTextHTMLElement.m; path = Core/Source/DTTextHTMLElement.m; sourceTree = "<group>"; };
 		61B407EB5116DAA9DBACF7E269858958 /* NSMutableArray+DTMoving.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableArray+DTMoving.h"; path = "Core/Source/NSMutableArray+DTMoving.h"; sourceTree = "<group>"; };
-		621CE2E89AD5F376A86FA636254C7827 /* DTCoreText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DTCoreText.modulemap; sourceTree = "<group>"; };
+		621CE2E89AD5F376A86FA636254C7827 /* DTCoreText.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DTCoreText.modulemap; sourceTree = "<group>"; };
 		640C283875BC41867A50A95A342606AB /* UIFont+DTCoreText.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIFont+DTCoreText.m"; path = "Core/Source/UIFont+DTCoreText.m"; sourceTree = "<group>"; };
 		643983AADCAF8D40A4742430D0B6E56B /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		656992ACCCA3E65DA9CC4E129869E0D7 /* AFNetworking-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "AFNetworking-prefix.pch"; sourceTree = "<group>"; };
 		65F7106ED799F2744C6AEA8B9E183B0F /* BlazeSegmentedControlTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeSegmentedControlTableViewCell.m; path = Blaze/TableViewCells/BlazeSegmentedControlTableViewCell.m; sourceTree = "<group>"; };
 		6606275B89B1AD9A3F9F53F04DA6186A /* DTCoreText.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTCoreText.h; path = Core/Source/DTCoreText.h; sourceTree = "<group>"; };
 		67D7A372B9B63D8A6997DB0249748FE4 /* DTCoreTextFontDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTCoreTextFontDescriptor.h; path = Core/Source/DTCoreTextFontDescriptor.h; sourceTree = "<group>"; };
-		695B1B6716FD77FE53D915AA590FB910 /* BDGImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = BDGImagePicker.modulemap; sourceTree = "<group>"; };
+		695B1B6716FD77FE53D915AA590FB910 /* BDGImagePicker.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = BDGImagePicker.modulemap; sourceTree = "<group>"; };
 		699118D7DDD5F335E4FB8B17DC0F12D2 /* Pods-Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-Example-dummy.m"; sourceTree = "<group>"; };
 		6A1D67D694AD6A4BEFD063E064BE8BEF /* NSCharacterSet+HTML.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSCharacterSet+HTML.m"; path = "Core/Source/NSCharacterSet+HTML.m"; sourceTree = "<group>"; };
 		6AB8E6BF1809FDBAB75A634BEFCA1D31 /* BlazeTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeTableViewCell.h; path = Blaze/TableViewCells/BlazeTableViewCell.h; sourceTree = "<group>"; };
@@ -601,12 +601,12 @@
 		8C4E9C81199CFF62C610404664E11A51 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Security.framework; sourceTree = DEVELOPER_DIR; };
 		8CBD625992F1E7F681FB5B2F15461F0F /* TTTAttributedLabel.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = TTTAttributedLabel.m; path = TTTAttributedLabel/TTTAttributedLabel.m; sourceTree = "<group>"; };
 		8CC1DF1D9D3868BF05617F0C85B3E6BD /* DTHTMLParserNode.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTHTMLParserNode.h; path = Core/Source/DTHTMLParserNode.h; sourceTree = "<group>"; };
-		8D6F1DBBE5BB40248F6A0A95582DB8C4 /* TTTAttributedLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = TTTAttributedLabel.framework; path = TTTAttributedLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D6F1DBBE5BB40248F6A0A95582DB8C4 /* TTTAttributedLabel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = TTTAttributedLabel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8EB7766A02016A90D616F1F966E82343 /* NSCoder+DTCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSCoder+DTCompatibility.h"; path = "Core/Source/NSCoder+DTCompatibility.h"; sourceTree = "<group>"; };
 		90F184B7F75C92ADC446575B8EE472E4 /* CTLineUtils.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = CTLineUtils.h; path = Core/Source/CTLineUtils.h; sourceTree = "<group>"; };
 		92CA6F9519F797DA9090E35B1BA709A8 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		937DAFD7BFB19C96D141028F5458B076 /* AFHTTPSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFHTTPSessionManager.m; path = AFNetworking/AFHTTPSessionManager.m; sourceTree = "<group>"; };
-		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9583160F73108112F395802D914257FE /* DTTextBlock.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTTextBlock.m; path = Core/Source/DTTextBlock.m; sourceTree = "<group>"; };
 		95E91B09AE140B70F9FCF6B3C69A524F /* CTLineUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = CTLineUtils.m; path = Core/Source/CTLineUtils.m; sourceTree = "<group>"; };
 		96666E5EECEF0F1D0CEFECF3A0AC64A7 /* DTPieProgressIndicator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTPieProgressIndicator.m; path = Core/Source/iOS/DTPieProgressIndicator.m; sourceTree = "<group>"; };
@@ -655,7 +655,7 @@
 		B762FE54139054D0471D9DD20D520B49 /* NSMutableArray+DTMoving.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSMutableArray+DTMoving.m"; path = "Core/Source/NSMutableArray+DTMoving.m"; sourceTree = "<group>"; };
 		B88CB697E8C782AB70E6BBE6E4064D24 /* BlazeRow.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeRow.h; path = Blaze/Objects/BlazeRow.h; sourceTree = "<group>"; };
 		B8D2F7E45B966FAE3F7F3CD696F522F7 /* BlazeSection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeSection.h; path = Blaze/Objects/BlazeSection.h; sourceTree = "<group>"; };
-		B9C77AD327AE4DAF05AE6EED9A6657F6 /* DTCoreText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DTCoreText.framework; path = DTCoreText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C77AD327AE4DAF05AE6EED9A6657F6 /* DTCoreText.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTCoreText.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA33CEA09E2B3B0973E1A639CE22DDAF /* DTCompatibility.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTCompatibility.h; path = Core/Source/DTCompatibility.h; sourceTree = "<group>"; };
 		BAF0CF587B3DC92950B35A7E85F87B05 /* DTCoreTextLayoutFrameAccessibilityElementGenerator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTCoreTextLayoutFrameAccessibilityElementGenerator.h; path = Core/Source/DTCoreTextLayoutFrameAccessibilityElementGenerator.h; sourceTree = "<group>"; };
 		BBC7A504F01AEDA45DBE5D53BEF83569 /* BlazeImagePickerTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeImagePickerTableViewCell.m; path = Blaze/TableViewCells/BlazeImagePickerTableViewCell.m; sourceTree = "<group>"; };
@@ -678,7 +678,7 @@
 		C9BDE82371C83FA9AE91B05F77ACAA36 /* Pods-Example-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-Example-umbrella.h"; sourceTree = "<group>"; };
 		C9E7EF0D29800E756E906E841BE29FB0 /* UIScrollView+EmptyDataSet.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIScrollView+EmptyDataSet.h"; path = "Blaze/Categories/UIScrollView+EmptyDataSet.h"; sourceTree = "<group>"; };
 		CB0A1CAA283820E0287BBF5390AB5B02 /* NSString+CSS.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+CSS.h"; path = "Core/Source/NSString+CSS.h"; sourceTree = "<group>"; };
-		CB431B2B9C512DF39ABB21A72C86D241 /* DTFoundation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = DTFoundation.modulemap; sourceTree = "<group>"; };
+		CB431B2B9C512DF39ABB21A72C86D241 /* DTFoundation.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = DTFoundation.modulemap; sourceTree = "<group>"; };
 		CBF897A7F230EA277CF907FE1CAD237C /* BlazeCheckboxTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeCheckboxTableViewCell.h; path = Blaze/TableViewCells/BlazeCheckboxTableViewCell.h; sourceTree = "<group>"; };
 		CC4D0DDA5888398A559B72D8169CE4EA /* AFURLSessionManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFURLSessionManager.m; path = AFNetworking/AFURLSessionManager.m; sourceTree = "<group>"; };
 		CCACED5700B02642963F27393574F95E /* BlazeTilesTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeTilesTableViewCell.h; path = Blaze/TableViewCells/BlazeTilesTableViewCell.h; sourceTree = "<group>"; };
@@ -704,7 +704,7 @@
 		DEDC08F82F29428639AE31DDCEBFD03C /* DTAttributedTextContentView.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTAttributedTextContentView.h; path = Core/Source/DTAttributedTextContentView.h; sourceTree = "<group>"; };
 		DEEDF74986C0BD40CB7EE4351CF1DA8D /* UIProgressView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIProgressView+AFNetworking.m"; path = "UIKit+AFNetworking/UIProgressView+AFNetworking.m"; sourceTree = "<group>"; };
 		DFCA1A9B36F8D83D7DAEB6B4773B2E56 /* BlazeCheckboxTableViewCell.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeCheckboxTableViewCell.m; path = Blaze/TableViewCells/BlazeCheckboxTableViewCell.m; sourceTree = "<group>"; };
-		E1064468A6B436CFBAC565FE6B30ADA1 /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DTFoundation.framework; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E1064468A6B436CFBAC565FE6B30ADA1 /* DTFoundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DTFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BE773A4062E3564863CF1AE0F4F5AD /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/CoreText.framework; sourceTree = DEVELOPER_DIR; };
 		E21AEDC12B5C6B8125D0A1A9218A014A /* NSMutableString+HTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSMutableString+HTML.h"; path = "Core/Source/NSMutableString+HTML.h"; sourceTree = "<group>"; };
 		E305FE5EF9A368A2EC8F30BFA48DE282 /* DTFoundation-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DTFoundation-prefix.pch"; sourceTree = "<group>"; };
@@ -714,13 +714,13 @@
 		E478BD44C1EBC647BAB04EB4AB5DB164 /* NSURL+DTComparing.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSURL+DTComparing.m"; path = "Core/Source/NSURL+DTComparing.m"; sourceTree = "<group>"; };
 		E49E9C6621840E244E39C2ED6CAC7CDB /* Blaze-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Blaze-umbrella.h"; sourceTree = "<group>"; };
 		E512A5F985F876750237FD237C3AEEDA /* Pods-Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-Example.release.xcconfig"; sourceTree = "<group>"; };
-		E622C7C6B41565A793B5CA1EE1A8BB6C /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_Example.framework; path = "Pods-Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E622C7C6B41565A793B5CA1EE1A8BB6C /* Pods_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6E33C96B408E79CE1DBA711C14B1AE8 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+AFNetworking.m"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		E747AF634E596E04F80B466E74747A53 /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIWebView+AFNetworking.h"; path = "UIKit+AFNetworking/UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		E80738A1285D64C6A58CE986B00EC60F /* BlazeSliderTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeSliderTableViewCell.h; path = Blaze/TableViewCells/BlazeSliderTableViewCell.h; sourceTree = "<group>"; };
 		E80775104AD500850EAC918B12C4D5E3 /* NSString+DTURLEncoding.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSString+DTURLEncoding.h"; path = "Core/Source/NSString+DTURLEncoding.h"; sourceTree = "<group>"; };
 		E8DEAB9201FF4E2EB87603CD0D58B075 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
-		EA86481BEB770DB60C7FBFB359DF6A08 /* Blaze.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = Blaze.modulemap; sourceTree = "<group>"; };
+		EA86481BEB770DB60C7FBFB359DF6A08 /* Blaze.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = Blaze.modulemap; sourceTree = "<group>"; };
 		EAFA7E23E1AC525D4973C71FDD053141 /* BDGImagePicker-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BDGImagePicker-dummy.m"; sourceTree = "<group>"; };
 		EB707C99EACD699BB7D1EB53554CF824 /* NSNumber+RomanNumerals.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSNumber+RomanNumerals.h"; path = "Core/Source/NSNumber+RomanNumerals.h"; sourceTree = "<group>"; };
 		EBD0A21920EC2F5B373679D0C2387B50 /* UIWebView+DTFoundation.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIWebView+DTFoundation.m"; path = "Core/Source/iOS/UIWebView+DTFoundation.m"; sourceTree = "<group>"; };
@@ -736,10 +736,10 @@
 		F41F8403C79E1D9519301ED1C34A3880 /* BlazeImagePickerTableViewCell.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BlazeImagePickerTableViewCell.h; path = Blaze/TableViewCells/BlazeImagePickerTableViewCell.h; sourceTree = "<group>"; };
 		F44CB46F2542E704CFB096D3BE2C0757 /* DTHTMLAttributedStringBuilder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTHTMLAttributedStringBuilder.h; path = Core/Source/DTHTMLAttributedStringBuilder.h; sourceTree = "<group>"; };
 		F469540785683C7562C6FA2131176347 /* NSString+DTFormatNumbers.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "NSString+DTFormatNumbers.m"; path = "Core/Source/NSString+DTFormatNumbers.m"; sourceTree = "<group>"; };
-		F57CA9FFE3838FE8155AB73A710B2098 /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = AFNetworking.modulemap; sourceTree = "<group>"; };
+		F57CA9FFE3838FE8155AB73A710B2098 /* AFNetworking.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = "sourcecode.module-map"; path = AFNetworking.modulemap; sourceTree = "<group>"; };
 		F641E135E0D3872DAB5FD94825DD640A /* DTWebVideoView.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTWebVideoView.m; path = Core/Source/iOS/DTWebVideoView.m; sourceTree = "<group>"; };
 		F6921F9422610E1FF47F8E95EF35B19D /* DTLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTLog.h; path = Core/Source/DTLog.h; sourceTree = "<group>"; };
-		F6FAE77C87B052CC80EDCBE8E927B9F3 /* default.css.c */ = {isa = PBXFileReference; includeInIndex = 1; name = default.css.c; path = Core/Source/default.css.c; sourceTree = "<group>"; };
+		F6FAE77C87B052CC80EDCBE8E927B9F3 /* default.css.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = default.css.c; path = Core/Source/default.css.c; sourceTree = "<group>"; };
 		F7F6861085A8560CE5D189A1DCA8FF6D /* DTAnchorHTMLElement.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTAnchorHTMLElement.h; path = Core/Source/DTAnchorHTMLElement.h; sourceTree = "<group>"; };
 		F8155C43989FDF46A89AE417BF307E1F /* BlazeDatePickerField.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeDatePickerField.m; path = Blaze/TextFields/BlazeDatePickerField.m; sourceTree = "<group>"; };
 		F86FC5592A96789DE97000C88E6F8EFB /* DTCSSListStyle.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTCSSListStyle.m; path = Core/Source/DTCSSListStyle.m; sourceTree = "<group>"; };
@@ -751,8 +751,8 @@
 		FADA524BB11B469A62381EF53B88EAD1 /* DTCoreGraphicsUtils.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTCoreGraphicsUtils.m; path = Core/Source/DTCoreGraphicsUtils.m; sourceTree = "<group>"; };
 		FC0B7B2EE8EBA992C4EE15B25156A5B5 /* DTHTMLWriter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DTHTMLWriter.h; path = Core/Source/DTHTMLWriter.h; sourceTree = "<group>"; };
 		FC4F1EE1104526791C34844FEB908F16 /* DTImage+HTML.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DTImage+HTML.h"; path = "Core/Source/DTImage+HTML.h"; sourceTree = "<group>"; };
-		FE32813EE533DFE29D2CA82FCC1EAC59 /* Arrow_Right@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; name = "Arrow_Right@2x.png"; path = "Blaze/Resources/Arrow_Right@2x.png"; sourceTree = "<group>"; };
-		FE3E0988ABF0F5CE193271675D43BA18 /* Blaze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Blaze.framework; path = Blaze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FE32813EE533DFE29D2CA82FCC1EAC59 /* Arrow_Right@2x.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = "Arrow_Right@2x.png"; path = "Blaze/Resources/Arrow_Right@2x.png"; sourceTree = "<group>"; };
+		FE3E0988ABF0F5CE193271675D43BA18 /* Blaze.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Blaze.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB4FA2172F3EAF08A9EE0E80C9963F8 /* AFNetworkReachabilityManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = AFNetworkReachabilityManager.m; path = AFNetworking/AFNetworkReachabilityManager.m; sourceTree = "<group>"; };
 		FF56F1E310E1B1BEA4A0C293E26E4108 /* BlazeRow.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BlazeRow.m; path = Blaze/Objects/BlazeRow.m; sourceTree = "<group>"; };
 		FFCDA67DD72C8350886F3BDD3C70B657 /* DTObjectTextAttachment.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DTObjectTextAttachment.m; path = Core/Source/DTObjectTextAttachment.m; sourceTree = "<group>"; };
@@ -897,7 +897,6 @@
 				15C398D65A5386ABF4CD1DBD3A0296CD /* Resources */,
 				7D9BE0F2244AA205079D90ADC9BC4BB8 /* Support Files */,
 			);
-			name = Blaze;
 			path = Blaze;
 			sourceTree = "<group>";
 		};
@@ -951,7 +950,6 @@
 				8F3AF1523CF61434A906C404C0FDCD6B /* Support Files */,
 				F5022457A2D450956EEBC45400A98659 /* UIKit */,
 			);
-			name = DTFoundation;
 			path = DTFoundation;
 			sourceTree = "<group>";
 		};
@@ -983,7 +981,6 @@
 				8CBD625992F1E7F681FB5B2F15461F0F /* TTTAttributedLabel.m */,
 				435227FB7D8406E9302371E4F77EEEB6 /* Support Files */,
 			);
-			name = TTTAttributedLabel;
 			path = TTTAttributedLabel;
 			sourceTree = "<group>";
 		};
@@ -1239,7 +1236,6 @@
 				2B00BEAF858560A8D3AB5592B13E90BC /* Core */,
 				73CBCF35A05DEDB9C2E8C036196D18F6 /* Support Files */,
 			);
-			name = DTCoreText;
 			path = DTCoreText;
 			sourceTree = "<group>";
 		};
@@ -1256,7 +1252,6 @@
 			children = (
 				105D5FA465896900FE6B813C6B95513E /* BDGMacros.h */,
 			);
-			name = BDGMacros;
 			path = BDGMacros;
 			sourceTree = "<group>";
 		};
@@ -1324,7 +1319,6 @@
 				21641849B099A73069DCDF247BC541A0 /* Support Files */,
 				5BB5BF3EDE06E62BA66F09DC96985C45 /* UIKit */,
 			);
-			name = AFNetworking;
 			path = AFNetworking;
 			sourceTree = "<group>";
 		};
@@ -1360,7 +1354,6 @@
 				43553E9DBD2D160F3A018CE61E9B9C55 /* BDGImagePicker.m */,
 				1E9684F6DDE46CE99F4C6EAF9F740125 /* Support Files */,
 			);
-			name = BDGImagePicker;
 			path = BDGImagePicker;
 			sourceTree = "<group>";
 		};

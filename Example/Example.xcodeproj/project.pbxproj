@@ -38,6 +38,7 @@
 		ED2A1F5D1E1E6E290099242F /* BlazeHTMLRow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlazeHTMLRow.h; sourceTree = "<group>"; };
 		ED2A1F5E1E1E6E290099242F /* BlazeHTMLRow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlazeHTMLRow.m; sourceTree = "<group>"; };
 		ED2A1F601E1E6F2F0099242F /* HTMLTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTMLTableViewCell.xib; sourceTree = "<group>"; };
+		ED60503E1F66C7A900859893 /* BlazeHTMLCell.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; name = BlazeHTMLCell.podspec; path = ../BlazeHTMLCell.podspec; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +73,7 @@
 		ED09851C1E1E6C5D00A3B041 = {
 			isa = PBXGroup;
 			children = (
+				ED60503E1F66C7A900859893 /* BlazeHTMLCell.podspec */,
 				ED0985271E1E6C5D00A3B041 /* Example */,
 				ED0985261E1E6C5D00A3B041 /* Products */,
 				47D8D8BF2E6683ECA4BE0305 /* Pods */,

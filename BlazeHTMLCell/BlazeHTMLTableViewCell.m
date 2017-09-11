@@ -6,6 +6,8 @@
 //  Copyright © 2016 GraafICT. All rights reserved.
 //
 
+#import <DTCoreText/DTCoreText.h>
+
 #import "BlazeHTMLRow.h"
 #import "BlazeHTMLTableViewCell.h"
 
@@ -22,6 +24,8 @@
 
 -(void)updateCell
 {
+    NSLog(@"YO 2");
+    
     //Get html row
     BlazeHTMLRow *row = (BlazeHTMLRow *)self.row;
     
@@ -55,6 +59,19 @@
         //Remove CTForegroundColorFromContext attribute or ahref-links are not colored right @see https://github.com/Cocoanetics/DTCoreText/issues/792
         [attributedString removeAttribute:@"CTForegroundColorFromContext" range:NSMakeRange(0, attributedString.length)];
         
+        //Text-checking types
+        NSTextCheckingTypes textCheckingTypes = 0;
+        if(row.linkTapped) {
+            textCheckingTypes = textCheckingTypes|NSTextCheckingTypeLink;
+        }
+        if(row.phoneNumberTapped) {
+            textCheckingTypes = textCheckingTypes|NSTextCheckingTypePhoneNumber;
+        }
+        if(row.addressTapped) {
+            textCheckingTypes = textCheckingTypes|NSTextCheckingTypeAddress;
+        }
+        self.htmlLabel.enabledTextCheckingTypes = textCheckingTypes;
+        
         //Finally set it
         self.htmlLabel.text = attributedString;
     }
@@ -74,9 +91,6 @@
     
     //Performance boost
     self.htmlLabel.extendsLinkTouchArea = FALSE;
-    
-    //Text checking types - only link, address & phonenumber for now
-    self.htmlLabel.enabledTextCheckingTypes = NSTextCheckingTypeLink|NSTextCheckingTypeAddress|NSTextCheckingTypePhoneNumber;
 }
 
 #pragma mark - TTTAttributedLabelDelegate
