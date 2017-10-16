@@ -23,9 +23,7 @@
 #pragma mark - Update
 
 -(void)updateCell
-{
-    NSLog(@"YO 2");
-    
+{    
     //Get html row
     BlazeHTMLRow *row = (BlazeHTMLRow *)self.row;
     
