@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name           = 'BlazeHTMLCell'
-  s.version        = '0.0.7'
+  s.version        = '0.0.8'
   s.summary        = 'HTML-cell addition to Blaze'
   s.license 	   = 'MIT'
   s.description    = 'Useful HTML-cell addition to Blaze, using DTCoreText and TTTAttributedLabel for performance and link checking'
