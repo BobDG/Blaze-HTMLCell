@@ -18,6 +18,7 @@
 @property(nonatomic,strong) NSString *htmlString;
 @property(nonatomic,strong) UIColor *htmlTextColor;
 @property(nonatomic,strong) NSDictionary *htmlLinkAttributes;
+@property(nonatomic,strong) NSNumber *htmlLineHeightMultiplier;
 
 @property(nonatomic,copy) void (^linkTapped)(NSURL *url);
 @property(nonatomic,copy) void (^addressTapped)(NSDictionary *addressComponents);

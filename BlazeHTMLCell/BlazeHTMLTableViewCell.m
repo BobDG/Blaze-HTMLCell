@@ -41,6 +41,9 @@
             options[DTDefaultFontName] = row.htmlFont.fontName;
             options[DTDefaultFontFamily] = row.htmlFont.familyName;
             options[DTDefaultFontSize] = @(row.htmlFont.pointSize);
+            if(row.htmlLineHeightMultiplier) {
+                options[DTDefaultLineHeightMultiplier] = row.htmlLineHeightMultiplier;
+            }
         }
         
         //iOS6 always
