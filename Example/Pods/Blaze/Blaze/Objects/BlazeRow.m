@@ -14,12 +14,12 @@
 
 +(instancetype)rowWithTitle:(NSString *)title
 {
-    return [[BlazeRow alloc] initWithTitle:title];
+    return [[self alloc] initWithTitle:title];
 }
 
 +(instancetype)rowWithTitle:(NSString *)title segueIdentifier:(NSString *)segueIdentifier
 {
-    return [[BlazeRow alloc] initWithTitle:title segueIdentifier:segueIdentifier];
+    return [[self alloc] initWithTitle:title segueIdentifier:segueIdentifier];
 }
 
 #pragma mark Init with ID
@@ -88,9 +88,19 @@
     return [[self alloc] initWithXibName:xibName];
 }
 
++(instancetype)rowWithXibName:(NSString *)xibName height:(NSNumber *)height
+{
+    return [[self alloc] initWithXibName:xibName height:height];
+}
+
 +(instancetype)rowWithXibName:(NSString *)xibName title:(NSString *)title
 {
     return [[self alloc] initWithXibName:xibName title:title];
+}
+
++(instancetype)rowWithXibName:(NSString *)xibName title:(NSString *)title subtitle:(NSString *)subtitle
+{
+    return [[self alloc] initWithXibName:xibName title:title subtitle:subtitle];
 }
 
 -(instancetype)initWithXibName:(NSString *)xibName
@@ -98,9 +108,37 @@
     return [self initWithXibName:xibName title:nil];
 }
 
+-(instancetype)initWithXibName:(NSString *)xibName height:(NSNumber *)height
+{
+    self = [super init];
+    if(!self) {
+        return nil;
+    }
+    
+    self.xibName = xibName;
+    self.rowHeight = height;
+    
+    return self;
+}
+
 -(instancetype)initWithXibName:(NSString *)xibName title:(NSString *)title
 {
     return [self initWithXibName:xibName title:title placeholder:nil];
+}
+
+-(instancetype)initWithXibName:(NSString *)xibName title:(NSString *)title subtitle:(NSString *)subtitle
+{
+    self = [super init];
+    if(!self) {
+        return nil;
+    }
+    
+    self.title = title;
+    self.xibName = xibName;
+    self.subtitle = subtitle;
+    self.floatingLabelEnabled = FloatingLabelStateUndetermined;
+    
+    return self;
 }
 
 -(instancetype)initWithXibName:(NSString *)xibName title:(NSString *)title segueIdentifier:(NSString *)segueIdentifier
@@ -206,3 +244,25 @@
 }
 
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -9,15 +9,24 @@
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
 
+@class BlazeRow;
+@class BlazeTableHeaderFooterView;
+
 @interface BlazeSection : NSObject
 {
     
 }
 
+//Abstract constructors
++(instancetype)sectionWithHeaderTitle:(NSString *)headerTitle;
++(instancetype)sectionWithHeaderXibName:(NSString *)headerXibName;
++(instancetype)sectionWithHeaderXibName:(NSString *)headerXibName headerTitle:(NSString *)headerTitle;
+
 //Constructors
 -(void)addRow:(id)row;
 -(id)initWithHeaderTitle:(NSString *)headerTitle;
 -(id)initWithRowsXibName:(NSString *)rowsXibName;
+-(id)initWithHeaderXibName:(NSString *)headerXibName;
 -(id)initWithHeaderXibName:(NSString *)headerXibName headerTitle:(NSString *)headerTitle;
 -(id)initWithFooterXibName:(NSString *)footerXibName footerTitle:(NSString *)footerTitle;
 -(id)initWithID:(int)ID title:(NSString *)title backgroundColor:(UIColor *)backgroundColor;
@@ -30,10 +39,10 @@
 
 //Basic properties
 @property(nonatomic) int ID;
-@property(nonatomic) float headerHeight;
-@property(nonatomic) float footerHeight;
-@property(nonatomic,strong) NSMutableArray *rows;
+@property(nonatomic,strong) NSMutableArray <BlazeRow *> *rows;
 @property(nonatomic,strong) NSString *rowsXibName;
+@property(nonatomic,strong) NSNumber *headerHeight;
+@property(nonatomic,strong) NSNumber *footerHeight;
 
 //Colors
 @property(nonatomic,strong) UIColor *viewColor;
@@ -53,7 +62,7 @@
 
 //Completion blocks
 @property(nonatomic,copy) void (^buttonTapped)(void);
-@property(nonatomic,copy) void (^configureHeaderView)(UITableViewHeaderFooterView *headerFooterView);
-@property(nonatomic,copy) void (^configureFooterView)(UITableViewHeaderFooterView *headerFooterView);
+@property(nonatomic,copy) void (^configureHeaderView)(BlazeTableHeaderFooterView *headerFooterView);
+@property(nonatomic,copy) void (^configureFooterView)(BlazeTableHeaderFooterView *headerFooterView);
 
 @end

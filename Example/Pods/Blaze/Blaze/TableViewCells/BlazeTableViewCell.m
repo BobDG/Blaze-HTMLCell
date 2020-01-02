@@ -8,7 +8,16 @@
 
 #import <AFNetworking/UIImageView+AFNetworking.h>
 
+#import "BlazeTextField.h"
 #import "BlazeTableViewCell.h"
+#import "BlazeFieldProcessor.h"
+#import "BlazeDatePickerField.h"
+#import "BlazePickerViewField.h"
+#import "BlazeDateFieldProcessor.h"
+#import "BlazeTextFieldProcessor.h"
+#import "BlazePickerFieldProcessor.h"
+#import "BlazePickerViewMultipleField.h"
+#import "BlazePickerFieldMultipleProcessor.h"
 
 @implementation BlazeTableViewCell
 
@@ -19,18 +28,35 @@
     [super awakeFromNib];
 }
 
-#pragma mark - Selected
+#pragma mark - Selected/Highlighted
 
 -(void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
 
-    // Configure the view for the selected state
+    if(selected && self.mainField && !self.row.disableEditing && !self.row.disableFirstResponderOnCellTap) {
+        [self.mainField becomeFirstResponder];
+    }
+}
+
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    
+    //Update selectedView if one is assigned
+    if(self.selectedView) {
+        self.selectedView.hidden = !highlighted;
+    }
 }
 
 #pragma mark - Update
 
 -(void)updateCell
+{
+    //To be overridden
+}
+
+-(void)willDisappear
 {
     //To be overridden
 }
@@ -41,13 +67,27 @@
     
     //Update Labels IF connected
     if(self.titleLabel) {
-        [self updateLabel:self.titleLabel withText:self.row.title attributedText:self.row.attributedTitle color:self.row.titleColor];
+        [self updateLabel:self.titleLabel withText:self.row.title attributedText:self.row.attributedTitle color:self.row.titleColor alignment:self.row.textAlignmentType];
     }
     if(self.subtitleLabel) {
-        [self updateLabel:self.subtitleLabel withText:self.row.subtitle attributedText:self.row.attributedSubtitle color:self.row.subtitleColor];
+        [self updateLabel:self.subtitleLabel withText:self.row.subtitle attributedText:self.row.attributedSubtitle color:self.row.subtitleColor alignment:self.row.textAlignmentType];
     }
     if(self.subsubtitleLabel) {
-        [self updateLabel:self.subsubtitleLabel withText:self.row.subsubtitle attributedText:self.row.attributedSubSubtitle color:self.row.subsubtitleColor];
+        [self updateLabel:self.subsubtitleLabel withText:self.row.subsubtitle attributedText:self.row.attributedSubSubtitle color:self.row.subsubtitleColor alignment:self.row.textAlignmentType];
+    }
+    
+    //Additional Labels
+    if(self.row.additionalTitles.count > 0 && self.row.additionalTitles.count == self.additionalLabels.count) {
+        for(int i = 0; i < self.row.additionalTitles.count; i++) {
+            id text = self.row.additionalTitles[i];
+            UILabel *label = (UILabel *)self.additionalLabels[i];
+            if([text isKindOfClass:[NSAttributedString class]]) {
+                label.attributedText = text;
+            }
+            else {
+                label.text = text;
+            }
+        }
     }
     
     //Update imageviews IF connected
@@ -89,6 +129,24 @@
         [self updateView:self.viewRight backgroundColor:self.row.viewRightBackgroundColor];
     }
     
+    //Update pageControl IF connected
+    if(self.pageControl) {
+        self.pageControl.currentPage = self.row.currentPage;
+        self.pageControl.numberOfPages = self.row.numberOfPages;
+    }
+    
+    //Update constraints IF available
+    if(self.constraints.count && self.row.constraintConstants.count && self.constraints.count == self.row.constraintConstants.count) {
+        for(int i = 0; i < self.constraints.count; i++) {
+            ((NSLayoutConstraint *)self.constraints[i]).constant = [self.row.constraintConstants[i] intValue];
+        }
+        [self setNeedsUpdateConstraints];
+        [self layoutIfNeeded];
+    }
+    
+    //Field processors
+    [self setupFieldProcessors];
+    
     //Update cell (for subclasses)
     [self updateCell];
 }
@@ -118,7 +176,7 @@
 
 #pragma mark - Update default UIViews
 
--(void)updateLabel:(UILabel *)label withText:(NSString *)text attributedText:(NSAttributedString *)attributedText color:(UIColor *)color
+-(void)updateLabel:(UILabel *)label withText:(NSString *)text attributedText:(NSAttributedString *)attributedText color:(UIColor *)color alignment:(NSNumber *)alignment
 {
     if(attributedText.length) {
         label.attributedText = attributedText;
@@ -133,6 +191,11 @@
     //Color
     if(color) {
         label.textColor = color;
+    }
+    
+    //Alignment
+    if(alignment) {
+        label.textAlignment = (NSTextAlignment)[alignment intValue];
     }
 }
 
@@ -159,6 +222,38 @@
     }
 }
 
+#pragma mark - ImageView updates
+
+-(void)updateImageView:(UIImageView *)imageView imageURLString:(NSString *)imageURLString
+{
+    if(imageURLString.length) {
+        [imageView setImageWithURL:[NSURL URLWithString:imageURLString] placeholderImage:[UIImage new]];
+    }
+    else {
+        imageView.image = nil;
+    }
+}
+
+-(void)updateImageView:(UIImageView *)imageView imageName:(NSString *)imageName
+{
+    if(imageName.length) {
+        imageView.image = [UIImage imageNamed:imageName];
+    }
+    else {
+        imageView.image = nil;
+    }
+}
+
+-(void)updateImageView:(UIImageView *)imageView imageData:(NSData *)imageData
+{
+    if(imageData) {
+        imageView.image = [UIImage imageWithData:imageData];
+    }
+    else {
+        imageView.image = nil;
+    }
+}
+
 -(void)updateImageView:(UIImageView *)imageView withData:(NSData *)imageData imageURLString:(NSString *)imageURLString imageName:(NSString *)imageName contentMode:(UIViewContentMode)contentMode renderingMode:(UIImageRenderingMode)renderingMode tintColor:(UIColor *)tintColor
 {
     if(imageData) {
@@ -168,7 +263,11 @@
         [imageView setImageWithURL:[NSURL URLWithString:imageURLString] placeholderImage:[UIImage new]];
     }
     else if(imageName.length) {
-        imageView.image = [UIImage imageNamed:imageName];
+        if(self.bundle) {
+            imageView.image = [UIImage imageNamed:imageName inBundle:self.bundle compatibleWithTraitCollection:nil];
+        } else {
+            imageView.image = [UIImage imageNamed:imageName];
+        }
     }
     else {
         imageView.image = nil;
@@ -184,6 +283,19 @@
     }
 }
 
+-(void)updateImageView:(UIImageView *)imageView blazeMediaData:(BlazeMediaData *)mediaData
+{
+    if(mediaData.data) {
+        [self updateImageView:imageView imageData:mediaData.data];
+    }
+    else if(mediaData.urlStr.length) {
+        [self updateImageView:imageView imageURLString:mediaData.urlStr];
+    }
+    else if(mediaData.name.length) {
+        [self updateImageView:imageView imageName:mediaData.name];
+    }
+}
+
 -(void)updateView:(UIView *)view backgroundColor:(UIColor *)backgroundColor
 {
     if(backgroundColor) {
@@ -195,6 +307,22 @@
 
 -(BOOL)canBecomeFirstResponder
 {
+    if(!self.mainField) {
+        return FALSE;
+    }
+    return !self.row.disableEditing;
+}
+
+-(BOOL)becomeFirstResponder
+{
+    NSUInteger index = [self indexForCurrentFirstResponder];
+    if(index != NSNotFound) {
+        BlazeFieldProcessor *processor = self.fieldProcessors[index];
+        return [processor.field becomeFirstResponder];
+    }
+    else if(self.mainField) {
+        [self.mainField becomeFirstResponder];
+    }
     return FALSE;
 }
 
@@ -204,29 +332,23 @@
 {
     UIToolbar *toolBar = [[UIToolbar alloc] initWithFrame:CGRectZero];
     toolBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
-    UIBarButtonItem *previousBB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Arrow_Left" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(previousField:)];
+    UIBarButtonItem *nextBB;
+    UIBarButtonItem *previousBB;
+    if(self.row.inputAccessoryViewType == InputAccessoryViewDefaultArrows) {
+        previousBB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Arrow_Left" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(previousField:)];
+        nextBB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Arrow_Right" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(nextField:)];
+    }
+    else if(self.row.inputAccessoryViewType == InputAccessoryViewDefaultStrings) {
+        previousBB = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Blaze_KeyboardButton_Previous", @"") style:UIBarButtonItemStylePlain target:self action:@selector(previousField:)];
+        nextBB = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(@"Blaze_KeyboardButton_Next", @"") style:UIBarButtonItemStylePlain target:self action:@selector(nextField:)];
+    }
     UIBarButtonItem *fixedSpaceBB = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     fixedSpaceBB.width = 20.0f;
-    UIBarButtonItem *nextBB = [[UIBarButtonItem alloc] initWithImage:[UIImage imageNamed:@"Arrow_Right" inBundle:[NSBundle bundleForClass:[self class]] compatibleWithTraitCollection:nil] style:UIBarButtonItemStylePlain target:self action:@selector(nextField:)];
     UIBarButtonItem *flexibleSpaceBB = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
     UIBarButtonItem *doneBB = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(doneField:)];
     [toolBar setItems:@[previousBB, fixedSpaceBB, nextBB, flexibleSpaceBB, doneBB]]; 
     [toolBar sizeToFit];
     return toolBar;
-}
-
--(IBAction)nextField:(UIBarButtonItem *)sender
-{
-    if(self.nextField) {
-        self.nextField();
-    }
-}
-
--(IBAction)previousField:(UIBarButtonItem *)sender
-{
-    if(self.previousField) {
-        self.previousField();
-    }
 }
 
 -(IBAction)doneField:(UIBarButtonItem *)sender
@@ -237,5 +359,120 @@
     }
 }
 
+-(void)nextField:(UIBarButtonItem *)sender
+{
+    if(self.fieldProcessors.count>1) {
+        NSUInteger index = [self indexForCurrentFirstResponder];
+        if(index != NSNotFound) {
+            if(index+1 < self.fieldProcessors.count) {
+                BlazeFieldProcessor *nextProcessor = self.fieldProcessors[index+1];
+                [nextProcessor.field becomeFirstResponder];
+                return;
+            }
+        }
+    }
+    if(self.nextField) {
+        self.nextField();
+    }
+}
+
+-(void)previousField:(UIBarButtonItem *)sender
+{
+    if(self.fieldProcessors.count>1) {
+        NSUInteger index = [self indexForCurrentFirstResponder];
+        if(index != NSNotFound) {
+            if((int)index-1 >= 0) {
+                BlazeFieldProcessor *nextProcessor = self.fieldProcessors[index-1];
+                [nextProcessor.field becomeFirstResponder];
+                return;
+            }
+        }
+    }
+    
+    if(self.previousField) {
+        self.previousField();
+    }
+}
+
+#pragma mark - FieldProcessors
+
+-(void)setupFieldProcessors
+{
+    //Fields
+    NSMutableArray *rows = [NSMutableArray new];
+    NSMutableArray *fields = [NSMutableArray new];
+    if(self.mainField) {
+        [rows addObject:self.row];
+        [fields addObject:self.mainField];
+    }
+    if(self.additionalFields.count) {
+        [fields addObjectsFromArray:self.additionalFields];
+        if(self.row.additionalRows.count) {
+            [rows addObjectsFromArray:self.row.additionalRows];
+        }
+    }
+    
+    //Got any?
+    if(!fields.count) {
+        return;
+    }
+    
+    //Clear fieldprocessors
+    [self.fieldProcessors removeAllObjects];
+    
+    //Always create new processors, otherwise they are reused and inherit wrong properties they might not override
+    for(int i = 0; i < rows.count; i++) {
+        //Index check
+        if(i >= fields.count) {
+            break;
+        }
+        
+        //Field
+        id field = fields[i];
+        
+        //Determine Processor
+        BlazeFieldProcessor *processor;
+        if([field isKindOfClass:[BlazeDatePickerField class]]) {
+            processor = [BlazeDateFieldProcessor new];
+        }
+        else if([field isKindOfClass:[BlazePickerViewField class]]) {
+            processor = [BlazePickerFieldProcessor new];
+        }
+        else if([field isKindOfClass:[BlazePickerViewMultipleField class]]) {
+            processor = [BlazePickerFieldMultipleProcessor new];
+        }
+        else if([field isKindOfClass:[BlazeTextField class]]) {
+            processor = [BlazeTextFieldProcessor new];
+        }
+        
+        //Set processor properties
+        processor.field = field;
+        processor.row = rows[i];
+        processor.cell = self;
+        [processor update];
+        
+        //Add it
+        [self.fieldProcessors addObject:processor];
+    }
+}
+
+-(NSUInteger)indexForCurrentFirstResponder
+{
+    for(int i = 0; i < self.fieldProcessors.count; i++) {
+        BlazeFieldProcessor *processor = self.fieldProcessors[i];
+        if([processor.field isFirstResponder]) {
+            return i;
+        }
+    }
+    return NSNotFound;
+}
+
+-(NSMutableArray *)fieldProcessors
+{
+    if(!_fieldProcessors) {
+        _fieldProcessors = [NSMutableArray new];
+    }
+    return _fieldProcessors;
+}
 
 @end

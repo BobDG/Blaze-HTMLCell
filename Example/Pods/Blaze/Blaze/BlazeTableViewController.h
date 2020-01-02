@@ -10,6 +10,7 @@
 
 #import "BlazeRow.h"
 #import "BlazeSection.h"
+#import "BlazeTableViewCell.h"
 #import "NSObject+PropertyName.h"
 #import "UIScrollView+EmptyDataSet.h"
 
@@ -32,8 +33,15 @@
 @property(nonatomic,strong) UIColor *emptyBackgroundColor;
 @property(nonatomic,strong) NSDictionary *emptyTitleAttributes;
 @property(nonatomic,strong) UIView *emptyCustomView;
-@property(nonatomic) UITableViewCellSeparatorStyle filledTableViewCellSeparatorStyle;
-@property(nonatomic) UITableViewCellSeparatorStyle emptyTableViewCellSeparatorStyle;
+@property(nonatomic,strong) NSNumber *emptyVerticalTopPadding;
+@property(nonatomic,strong) NSNumber *filledTableViewCellSeparatorStyle;
+@property(nonatomic,strong) NSNumber *emptyTableViewCellSeparatorStyle;
+
+//Default InputAccessoryView
+@property(nonatomic,strong) NSNumber *defaultInputAccessoryViewType;
+
+//Specific bundle for nibs
+@property(nonatomic,strong) NSBundle *bundle;
 
 //Section index picker (A-Z) - Implemented assuming sections are correctly formatted and have a unique first-letter
 @property(nonatomic) bool useSectionIndexPicker;
@@ -41,17 +49,28 @@
 //Separator Inset
 @property(nonatomic) bool noSeparatorInset;
 
+//Disappearing - notify cells to for example stop timers/video's playing, etc.
+@property(nonatomic) bool notifyCellsWhenDisappearing;
+
+//Header caching (for animations in headerviews)
+-(void)clearSectionHeaderCache;
+@property(nonatomic) bool sectionHeaderCaching;
+
+//Inverted tableview (and cells/emptyview) - useful when showing e.g. messages from bottom to top incl. refreshcontrol at the bottom
+@property(nonatomic) bool invertedTableView;
+
 //Heights
-@property(nonatomic) float rowHeight;
-@property(nonatomic) float sectionHeaderHeight;
-@property(nonatomic) float sectionFooterHeight;
+@property(nonatomic,strong) NSNumber *rowHeight;
+@property(nonatomic,strong) NSNumber *estimatedRowHeight;
+@property(nonatomic,strong) NSNumber *sectionHeaderHeight;
+@property(nonatomic,strong) NSNumber *sectionFooterHeight;
 
 //Load content on appear
 -(void)loadTableContent;
 @property(nonatomic) bool loadContentOnAppear;
 
 //TableArray
-@property(nonatomic,strong) NSMutableArray *tableArray;
+@property(nonatomic,strong) NSMutableArray <BlazeSection *> *tableArray;
 
 //DraggableZoom headerView
 @property(nonatomic,strong) UIView *zoomTableHeaderView;
@@ -64,36 +83,71 @@
 @property(nonatomic) bool enableRefreshControl;
 @property(nonatomic,copy) void (^refreshControlPulled)(void);
 
-//Collapsing - override for example to fix iOS9 crashes...
--(void)collapseSection:(int)sectionIndex collapsed:(BOOL)collapsed;
+//Scrolling
+@property(nonatomic,copy) void (^beganScrolling)(void);
 
-//Utility methods
--(void)reloadHeightsQuickly;
--(BlazeRow *)rowForID:(int)rowID;
--(void)reloadTable:(BOOL)animated;
+//Floating Action Button - Advise is to setup in viewdidappear to ensure correct frame and visible animation
+-(void)removeFloatingActionButton;
+-(void)setupFloatingActionButtonWithImage:(UIImage *)image padding:(float)padding tapped:(void (^)(void))tapped;
+-(void)setupFloatingActionButtonWithImage:(UIImage *)image padding:(float)padding tapped:(void (^)(void))tapped animated:(BOOL)animated;
+
+//Collapsing - override for example to fix iOS9 crashes...
+-(void)collapseSection:(int)sectionIndex;
+
+//Scrolling
 -(void)scrollToTop:(BOOL)animated;
--(void)reloadCellForID:(int)rowID;
--(void)removeRowWithID:(int)rowID;
--(void)reloadTableWithFadeTransition;
--(void)reloadCellForRow:(BlazeRow *)row;
--(void)removeSectionWithID:(int)sectionID;
--(void)addSection:(BlazeSection *)section;
+
+//Registering
+-(void)registerCustomCell:(NSString *)xibName;
+-(void)registerCustomHeader:(NSString *)xibName;
+-(void)registerCustomCells:(NSArray <NSString *> *)cellNames;
+-(void)registerCustomHeaders:(NSArray <NSString *> *)headerNames;
+
+//Retrieving
+-(BlazeRow *)rowForID:(int)rowID;
 -(NSIndexPath *)indexPathForRowID:(int)rowID;
 -(BlazeSection *)sectionForID:(int)sectionID;
--(void)registerCustomCell:(NSString *)xibName;
 -(NSIndexPath *)indexPathForRow:(BlazeRow *)row;
--(void)registerCustomHeader:(NSString *)xibName;
--(void)registerCustomCells:(NSArray *)cellNames;
--(void)registerCustomHeaders:(NSArray *)headerNames;
+-(BlazeTableViewCell *)cellForRow:(BlazeRow *)row;
 -(BlazeRow *)rowForIndexPath:(NSIndexPath *)indexPath;
--(void)addRow:(BlazeRow *)row afterRowID:(int)afterRowID;
+
+//Reloading
+-(void)reloadHeightsQuickly;
+-(void)reloadTable:(BOOL)animated;
+-(void)reloadCellForID:(int)rowID;
+-(void)reloadTableWithFadeTransition;
+-(void)reloadCellForRow:(BlazeRow *)row;
 -(void)reloadTableWithAnimation:(UITableViewRowAnimation)animation;
--(void)removeRowsInSection:(int)sectionIndex fromIndex:(int)rowIndex;
--(void)addSection:(BlazeSection *)section afterSectionID:(int)afterSectionID;
 -(void)reloadCellForID:(int)rowID withRowAnimation:(UITableViewRowAnimation)animation;
--(void)removeRowWithID:(int)rowID withRowAnimation:(UITableViewRowAnimation)animation;
 -(void)reloadCellForRow:(BlazeRow *)row withRowAnimation:(UITableViewRowAnimation)animation;
+
+//Adding sections
+-(void)addSection:(BlazeSection *)section;
+-(void)addSection:(BlazeSection *)section afterSectionID:(int)afterSectionID;
+
+//Deleting rows
+-(void)deleteRow:(BlazeRow *)row;
+-(void)deleteRows:(NSArray *)rows;
+-(void)deleteRow:(BlazeRow *)row withRowAnimation:(UITableViewRowAnimation)animation;
+-(void)deleteRows:(NSArray *)rows withRowAnimation:(UITableViewRowAnimation)animation;
+
+//Adding rows
+-(void)addRows:(NSArray *)rows atIndexPaths:(NSArray *)indexPaths;
+-(void)addRow:(BlazeRow *)row atIndexPath:(NSIndexPath *)indexPath;
+-(void)addRows:(NSArray *)rows atIndexPaths:(NSArray *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation;
+-(void)addRow:(BlazeRow *)row atIndexPath:(NSIndexPath *)indexPath withRowAnimation:(UITableViewRowAnimation)animation;
+
+//Adding rows with older ID methods
+-(void)addRow:(BlazeRow *)row afterRowID:(int)afterRowID;
 -(void)addRow:(BlazeRow *)row afterRowID:(int)afterRowID withRowAnimation:(UITableViewRowAnimation)animation;
+
+//Removing sections
+-(void)removeSectionWithID:(int)sectionID;
+
+//Removing rows
+-(void)removeRowWithID:(int)rowID;
+-(void)removeRowsInSection:(int)sectionIndex fromIndex:(int)rowIndex;
+-(void)removeRowWithID:(int)rowID withRowAnimation:(UITableViewRowAnimation)animation;
 
 @end
 

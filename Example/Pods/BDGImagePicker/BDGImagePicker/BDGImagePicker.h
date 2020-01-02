@@ -14,9 +14,14 @@
 }
 
 /*** LOCALISATIONS ***/
-//  BDGImagePicker_Cancel
-//  BDGImagePicker_TakePhoto
-//  BDGImagePicker_ChoosePhoto
+/*
+"BDGImagePicker_Cancel" = "Cancel";
+"BDGImagePicker_TakePhoto" = "Take picture";
+"BDGImagePicker_ChoosePhoto" = "Choose photo";
+"BDGImagePicker_Camera_Denied_Popup_Title" = "Camera access denied";
+"BDGImagePicker_Camera_Denied_Popup_Message" = "Access to the camera is needed to take pictures. Please open the settings using the button below and allow access.";
+"BDGImagePicker_Camera_Denied_Popup_Button_Settings" = "Settings";
+*/
 
 //Quick constructors
 -(instancetype)initWithAllowsEditing:(BOOL)allowsEditing;
@@ -50,7 +55,12 @@
 -(void)pickImageFromViewController:(UIViewController *)viewController sourceRect:(CGRect)sourceRect;
 -(void)pickImageFromViewController:(UIViewController *)viewController imagePicked:(void(^)(UIImage *image))imagePicked;
 -(void)pickImageFromViewController:(UIViewController *)viewController sourceRect:(CGRect)sourceRect imagePicked:(void(^)(UIImage *image))imagePicked;
--(void)pickImageFromViewController:(UIViewController *)viewController imagePicked:(void(^)(UIImage *image))imagePicked pickerDismissed:(void(^)())pickerDismissed;
--(void)pickImageFromViewController:(UIViewController *)viewController sourceRect:(CGRect)sourceRect imagePicked:(void(^)(UIImage *image))imagePicked pickerDismissed:(void(^)())pickerDismissed;
+-(void)pickImageFromViewController:(UIViewController *)viewController imagePicked:(void(^)(UIImage *image))imagePicked pickerDismissed:(void(^)(void))pickerDismissed;
+-(void)pickImageFromViewController:(UIViewController *)viewController sourceRect:(CGRect)sourceRect imagePicked:(void(^)(UIImage *image))imagePicked pickerDismissed:(void(^)(void))pickerDismissed;
+
++(void)showCameraAccessRequiredPopupFromViewController:(UIViewController *)viewController;
+-(void)pictureFromCamera:(UIViewController *)viewController imagePicked:(void(^)(UIImage *image))imagePicked;
+-(void)pictureFromPhotoLibrary:(UIViewController *)viewController imagePicked:(void(^)(UIImage *image))imagePicked;
+-(void)pictureFromPhotoLibrary:(UIViewController *)viewController sourceRect:(CGRect)sourceRect imagePicked:(void(^)(UIImage *image))imagePicked;
 
 @end

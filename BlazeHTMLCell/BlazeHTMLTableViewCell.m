@@ -38,8 +38,9 @@
             options[DTDefaultTextColor] = row.htmlTextColor;
         }
         if(row.htmlFont) {
-            options[DTDefaultFontName] = row.htmlFont.fontName;
-            options[DTDefaultFontFamily] = row.htmlFont.familyName;
+            //The . replacement is necessary because >= iOS13 systemFontOfSize returns a non-postscript fontname that DTCoreText can't handle.
+            options[DTDefaultFontName] = [row.htmlFont.fontName stringByReplacingOccurrencesOfString:@"." withString:@""];
+            options[DTDefaultFontFamily] = [row.htmlFont.familyName stringByReplacingOccurrencesOfString:@"." withString:@""];
             options[DTDefaultFontSize] = @(row.htmlFont.pointSize);
             if(row.htmlLineHeightMultiplier) {
                 options[DTDefaultLineHeightMultiplier] = row.htmlLineHeightMultiplier;

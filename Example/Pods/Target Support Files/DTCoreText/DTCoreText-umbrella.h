@@ -1,5 +1,13 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
+#else
+#ifndef FOUNDATION_EXPORT
+#if defined(__cplusplus)
+#define FOUNDATION_EXPORT extern "C"
+#else
+#define FOUNDATION_EXPORT extern
+#endif
+#endif
 #endif
 
 #import "CTLineUtils.h"
@@ -67,7 +75,6 @@
 #import "NSString+HTML.h"
 #import "NSString+Paragraphs.h"
 #import "UIFont+DTCoreText.h"
-#import "DTWebVideoView.h"
 #import "CTLineUtils.h"
 #import "DTAccessibilityElement.h"
 #import "DTAccessibilityViewProxy.h"
