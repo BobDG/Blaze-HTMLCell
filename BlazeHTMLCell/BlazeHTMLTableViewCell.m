@@ -38,9 +38,16 @@
             options[DTDefaultTextColor] = row.htmlTextColor;
         }
         if(row.htmlFont) {
-            //The . replacement is necessary because >= iOS13 systemFontOfSize returns a non-postscript fontname that DTCoreText can't handle.
-            options[DTDefaultFontName] = [row.htmlFont.fontName stringByReplacingOccurrencesOfString:@"." withString:@""];
-            options[DTDefaultFontFamily] = [row.htmlFont.familyName stringByReplacingOccurrencesOfString:@"." withString:@""];
+            if (@available(iOS 13, *)) {
+                //For iOS13, the . replacement is necessary because the systemFontOfSize returns a non-postscript fontname that DTCoreText can't handle...
+                options[DTDefaultFontName] = [row.htmlFont.fontName stringByReplacingOccurrencesOfString:@"." withString:@""];
+                options[DTDefaultFontFamily] = [row.htmlFont.familyName stringByReplacingOccurrencesOfString:@"." withString:@""];
+            }
+            else {
+                options[DTDefaultFontName] = row.htmlFont.fontName;
+                options[DTDefaultFontFamily] = row.htmlFont.familyName;
+            }
+            
             options[DTDefaultFontSize] = @(row.htmlFont.pointSize);
             if(row.htmlLineHeightMultiplier) {
                 options[DTDefaultLineHeightMultiplier] = row.htmlLineHeightMultiplier;
@@ -73,6 +80,11 @@
             textCheckingTypes = textCheckingTypes|NSTextCheckingTypeAddress;
         }
         self.htmlLabel.enabledTextCheckingTypes = textCheckingTypes;
+                
+        //For iOS13, the . replacement fixes that it uses different fonts but the resulting fonts are still incorrect. This fixes this...
+        if (@available(iOS 13, *)) {
+            [self changeAttributedString:attributedString font:row.htmlFont color:nil];
+        }
         
         //Finally set it
         self.htmlLabel.text = attributedString;
@@ -119,6 +131,28 @@
     if(row.phoneNumberTapped) {
         row.phoneNumberTapped(phoneNumber);
     }
+}
+
+#pragma mark - Fix fonts
+
+-(void)changeAttributedString:(NSMutableAttributedString *)string font:(UIFont *)font color:(UIColor *)color {
+    [string enumerateAttribute:NSFontAttributeName
+                     inRange:NSMakeRange(0, string.length)
+                     options:0
+                  usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+                      UIFont *oldFont = (UIFont *)value;
+                      UIFontDescriptor *newFontDescriptor = [[oldFont.fontDescriptor fontDescriptorWithFamily:font.familyName] fontDescriptorWithSymbolicTraits:oldFont.fontDescriptor.symbolicTraits];
+                      UIFont *newFont = [UIFont fontWithDescriptor:newFontDescriptor size:font.pointSize];
+                      if (newFont) {
+                          [string removeAttribute:NSFontAttributeName range:range];
+                          [string addAttribute:NSFontAttributeName value:newFont range:range];
+                      }
+
+                      if (color) {
+                          [string removeAttribute:NSForegroundColorAttributeName range:range];
+                          [string addAttribute:NSForegroundColorAttributeName value:newFont range:range];
+                      }
+                  }];
 }
 
 
