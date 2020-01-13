@@ -83,7 +83,7 @@
                 
         //For iOS13, the . replacement fixes that it uses different fonts but the resulting fonts are still incorrect. This fixes this...
         if (@available(iOS 13, *)) {
-            [self changeAttributedString:attributedString font:row.htmlFont color:nil];
+            [self changeAttributedString:attributedString font:row.htmlFont];
         }
         
         //Finally set it
@@ -135,24 +135,16 @@
 
 #pragma mark - Fix fonts
 
--(void)changeAttributedString:(NSMutableAttributedString *)string font:(UIFont *)font color:(UIColor *)color {
-    [string enumerateAttribute:NSFontAttributeName
-                     inRange:NSMakeRange(0, string.length)
-                     options:0
-                  usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
-                      UIFont *oldFont = (UIFont *)value;
-                      UIFontDescriptor *newFontDescriptor = [[oldFont.fontDescriptor fontDescriptorWithFamily:font.familyName] fontDescriptorWithSymbolicTraits:oldFont.fontDescriptor.symbolicTraits];
-                      UIFont *newFont = [UIFont fontWithDescriptor:newFontDescriptor size:font.pointSize];
-                      if (newFont) {
-                          [string removeAttribute:NSFontAttributeName range:range];
-                          [string addAttribute:NSFontAttributeName value:newFont range:range];
-                      }
-
-                      if (color) {
-                          [string removeAttribute:NSForegroundColorAttributeName range:range];
-                          [string addAttribute:NSForegroundColorAttributeName value:newFont range:range];
-                      }
-                  }];
+-(void)changeAttributedString:(NSMutableAttributedString *)string font:(UIFont *)font {
+    [string enumerateAttribute:NSFontAttributeName inRange:NSMakeRange(0, string.length) options:0 usingBlock:^(id  _Nullable value, NSRange range, BOOL * _Nonnull stop) {
+        UIFont *oldFont = (UIFont *)value;
+        UIFontDescriptor *newFontDescriptor = [[oldFont.fontDescriptor fontDescriptorWithFamily:font.familyName] fontDescriptorWithSymbolicTraits:oldFont.fontDescriptor.symbolicTraits];
+        UIFont *newFont = [UIFont fontWithDescriptor:newFontDescriptor size:oldFont.pointSize];
+        if(newFont) {
+            [string removeAttribute:NSFontAttributeName range:range];
+            [string addAttribute:NSFontAttributeName value:newFont range:range];
+        }
+    }];
 }
 
 
